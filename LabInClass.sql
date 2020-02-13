@@ -41,7 +41,7 @@ CREATE TABLE BusTransaction(
     employeeID  smallint not null,
     stop_point varchar(100),
     fare int not null,
-    Transaction_time timestamp,
+    Transaction_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	
     foreign key(BusNo) references Bus(id),
     foreign key(employeeID) references Employees(id)
@@ -81,6 +81,25 @@ INSERT INTO Employees(EmployeeID,fname,lname,Occupation,email,gender)
           (13,'Zak','Issahack','Faculty','Issahack@ashesi.edu.gh','male'),
           (14,'Elvis','Okoh','Faculty',' elvis.okoh-asirifi@ashesi.edu.gh','male');
 -- 
--- INSERT INTO BusTransaction
--- 	values();
+INSERT INTO BusTransaction(BusNO,employeeID,stop_point,fare)
+	values(1,1,'Ashesi',3),
+		  (2,3,'Ashesi',3),
+          (3,2,'Ashesi',3),
+          (4,1,'Ashesi',3),
+          (4,1,'Accra Mall',3),
+          (3,2,'Atomic Junction',3),
+          (2,3,'Accra Mall',3),
+          (1,1,'Atomic Junction',3),
+          (1,5,'Ashesi',1),
+          (1,5,'Berekuso',1);
 --     
+select * from BusTransaction where stop_point = 'Ashesi';
+
+
+
+
+
+
+
+
+
